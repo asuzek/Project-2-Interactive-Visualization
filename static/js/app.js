@@ -1,54 +1,10 @@
 
-async function makePlot(){
-    const defaultURL = "/city";
-    let data = await d3.json(defaultURL);
-    data = [data];
-    const layout = { margin: { t: 30, b: 100 } };
-    Plotly.plot("chart", data, layout);
-}
-
-function updatePlotly(newdata) {
-    Plotly.restyle("chart", "x", [newdata.x]);
-    Plotly.restyle("chart", "y", [newdata.y]);
-}
-
-// Get new data whenever the dropdown selection changes
-async function getData(route) {
-    console.log(route);
-    let data = await d3.json(`/${route}`);
-    updatePlotly(data);
-}
-
-makePlot();
-
 // async function makePlot(){
-//     const defaultURL = "/skill";
+//     let defaultURL = "/city";
 //     let data = await d3.json(defaultURL);
 //     data = [data];
 //     const layout = { margin: { t: 30, b: 100 } };
 //     Plotly.plot("chart", data, layout);
-// }
-
-// function updatePlotly(newdata) {
-//     Plotly.restyle("chart", "x", [newdata.x]);
-//     Plotly.restyle("chart", "y", [newdata.y]);
-// }
-
-// // Get new data whenever the dropdown selection changes
-// // async function getData(route) {
-// //     console.log(route);
-// //     let data = await d3.json(`/${route}`);
-// //     updatePlotly(data);
-// // }
-
-// makePlot();
-
-// async function makePlot_city(){
-//     const defaultURL = "/city";
-//     let data_city = await d3.json(defaultURL);
-//     data_city = [data_city];
-//     const layout = { margin: { t: 30, b: 100 } };
-//     Plotly.plot("chart", data_city, layout);
 // }
 
 // function updatePlotly(newdata) {
@@ -63,7 +19,57 @@ makePlot();
 //     updatePlotly(data);
 // }
 
-// makePlot_city();
+// makePlot();
+
+// City
+async function makePlot_city(){
+    let defaultURL_city = "/city";
+    let data_city = await d3.json(defaultURL_city);
+    data_city = [data_city];
+    const layout = { margin: { t: 30, b: 100 } };
+    Plotly.plot("chart", data_city, layout);
+}
+
+function updatePlotly(newdata) {
+    Plotly.restyle("chart", "x", [newdata.x]);
+    Plotly.restyle("chart", "y", [newdata.y]);
+}
+
+// Get new data whenever the dropdown selection changes
+async function getData(route) {
+    console.log(route);
+    let data_city = await d3.json(`/${route}`);
+    updatePlotly(data_city);
+}
+
+makePlot_city();
+
+// // Skill
+// async function makePlot_skill(){
+//     let defaultURL_skill = "/skill";
+//     console.log(defaultURL_skill)
+//     let data_skill = await d3.json(defaultURL_skill);
+//     console.log("Skill Chart")
+//     console.log (data_skill)
+//     data_skill = [data_skill];
+//     const layout = { margin: { t: 20, b: 100 } };
+//     Plotly.plot("chart_skill", data_skill, layout);
+// }
+
+// function updatePlotly(newdata) {
+//     Plotly.restyle("chart", "x", [newdata.x]);
+//     Plotly.restyle("chart", "y", [newdata.y]);
+// }
+
+// // Get new data whenever the dropdown selection changes
+// async function getData(route) {
+//     console.log(route);
+//     let data_skill = await d3.json(`/${route}`);
+//     updatePlotly(data_skill);
+// }
+// makePlot_skill();
+
+
 
 // async function makePlot_company(){
 //     const defaultURL = "/company";

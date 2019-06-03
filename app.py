@@ -14,6 +14,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db/data_science.sqlite"
 
 db = SQLAlchemy(app)
 
+@app.route("/")
+def home():
+    """Render Home Page."""
+    return render_template("index.html")
+
 # City
 # Create our database model
 class City(db.Model):
@@ -37,7 +42,7 @@ class City(db.Model):
 
 @app.route("/city")
 def city_data():
-    """Return     and   id"""
+   #  """Return     and   id"""
 
     # Query for the   data using pandas
     query_statement = db.session.query(City).\
@@ -52,6 +57,7 @@ def city_data():
         "x": df["City"].values.tolist(),
         "y": df["Count"].values.tolist(),
         "type": "bar"
+        
     }
     return jsonify(trace)
 
@@ -66,20 +72,6 @@ class Company(db.Model):
 
     def __repr__(self):
         return '<Company %r>' % (self.name)
-
-
-# # Create database tables
-# @app.before_first_request
-# def setup():
-#     # Recreate database each time for demo
-#     # db.drop_all()
-#     db.create_all()
-
-
-@app.route("/")
-def home():
-    """Render Home Page."""
-    return render_template("index.html")
 
 @app.route("/company")
 def company_data():
@@ -97,7 +89,7 @@ def company_data():
     trace = {
         "x": df["Company"].values.tolist(),
         "y": df["Count"].values.tolist(),
-        "type": "bar"
+        "type": "pie"
     }
     return jsonify(trace)
 
@@ -135,15 +127,6 @@ class Education(db.Model):
     def __repr__(self):
         return '<Education %r>' % (self.name)
 
-
-# # Create database tables
-# @app.before_first_request
-# def setup():
-#     # Recreate database each time for demo
-#     # db.drop_all()
-#     db.create_all()
-
-
 @app.route("/education")
 def education_data():
     """Return     and   id"""
@@ -176,15 +159,6 @@ class Experience(db.Model):
     def __repr__(self):
         return '<Experience %r>' % (self.name)
 
-
-# # Create database tables
-# @app.before_first_request
-# def setup():
-#     # Recreate database each time for demo
-#     # db.drop_all()
-#     db.create_all()
-
-
 @app.route("/experience")
 def experience_data():
     """Return experience and the count"""
@@ -216,15 +190,6 @@ class Skill(db.Model):
 
     def __repr__(self):
         return '<Skill %r>' % (self.name)
-
-
-# Create database tables
-# @app.before_first_request
-# def setup():
-#     # Recreate database each time for demo
-#     # db.drop_all()
-#     db.create_all()
-
 
 @app.route("/skill")
 def skill_data():
