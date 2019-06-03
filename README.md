@@ -32,7 +32,7 @@ Possible visualizations are going to be
 * heat map for the location of the jobs etc...
 
 #### Example Bubble Chart
-![Example Dashboard Page](Images/dashboard_part2.png)
+![Example Dashboard Page](Images/bubble.png)
 
 
 ## Hosting with Heroku and SQLite
